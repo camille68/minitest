@@ -9,10 +9,9 @@
     </style>
   </head>
   <body>
-    <h2>Telegram Web App Form</h2>
+    <h2>Invite Form</h2>
     <form id="form">
-      <input type="text" name="name" placeholder="Your name" required />
-      <input type="email" name="email" placeholder="Your email" required />
+      <input type="text" name="code" placeholder="Your invitation code" required />
       <button type="submit">Submit</button>
     </form>
 
@@ -23,8 +22,7 @@
       document.getElementById("form").addEventListener("submit", e => {
         e.preventDefault();
         const data = {
-          name: e.target.name.value,
-          email: e.target.email.value,
+          code: e.target.code.value,
           user_id: tg.initDataUnsafe.user?.id
         };
         tg.sendData(JSON.stringify(data));
