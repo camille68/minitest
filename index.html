@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+      body { font-family: sans-serif; padding: 20px; }
+      input, button { margin-top: 10px; width: 100%; }
+    </style>
+  </head>
+  <body>
+    <h2>Telegram Web App Form</h2>
+    <form id="form">
+      <input type="text" name="name" placeholder="Your name" required />
+      <input type="email" name="email" placeholder="Your email" required />
+      <button type="submit">Submit</button>
+    </form>
+
+    <script>
+      const tg = window.Telegram.WebApp;
+      tg.expand();
+
+      document.getElementById("form").addEventListener("submit", e => {
+        e.preventDefault();
+        const data = {
+          name: e.target.name.value,
+          email: e.target.email.value,
+          user_id: tg.initDataUnsafe.user?.id
+        };
+        tg.sendData(JSON.stringify(data));
+        tg.close();
+      });
+    </script>
+  </body>
+</html>
