@@ -10,12 +10,22 @@
   </head>
   <body>
     <h2>Invite Form</h2>
+    <div id="user-id">Loading...</div>
     <form id="form">
       <input type="text" name="code" placeholder="Your invitation code" required />
       <button type="submit">Submit</button>
     </form>
 
     <script>
+       window.onload = function() {
+    const user = Telegram.WebApp.initDataUnsafe.user;
+    if (user) {
+      const userId = user.id;
+      document.getElementById('user-id').textContent = `User ID: ${userId}`;
+    } else {
+      document.getElementById('user-id').textContent = 'User info not available';
+    }
+  };
       const tg = window.Telegram.WebApp;
       tg.expand();
 
@@ -30,5 +40,6 @@
         tg.close();
       });
     </script>
+    
   </body>
 </html>
