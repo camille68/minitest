@@ -36,7 +36,8 @@
           code: e.target.code.value,
           user_id: tg.initDataUnsafe.user?.id
         };
-        tg.sendData(JSON.stringify(data));
+        //tg.sendData(JSON.stringify(data));
+        tg.sendData("toto");
         tg.close();
       });
     </script>
